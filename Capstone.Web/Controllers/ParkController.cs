@@ -20,12 +20,23 @@ namespace Capstone.Web.Controllers
         // GET: Park
         public ActionResult Index()
         {
+
+            if (Session["isCelsius"] == null)
+            {
+                Session["isCelsius"] = false;
+            }
+
             return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Detail(string parkCode)
         {
-            if(parkCode == "" || parkCode == null)
+            if (Session["isCelsius"] == null)
+            {
+                Session["isCelsius"] = false;
+            }
+
+            if (parkCode == "" || parkCode == null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -36,9 +47,27 @@ namespace Capstone.Web.Controllers
 
             Park model = parkDAL.GetPark(parkCode);
             model.Forecast = parkDAL.GetFiveDayForecast(parkCode); 
+            model.SwitchDegrees(Convert.ToBoolean(Session["isCelsius"]));
 
             return View("Detail", model);
         }
-        
+
+        [HttpPost]
+        public ActionResult Detail(bool Celsius, string parkCode)
+        {
+            if (Celsius)
+            {
+                Session["isCelsius"] = true;
+            }
+            else
+            {
+                Session["isCelsius"] = false;
+            }
+
+            return RedirectToAction("Detail", "Park", new { parkCode });
+        }
+
+
+
     }
 }

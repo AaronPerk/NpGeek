@@ -8,16 +8,16 @@
 @model Park
 
 <div class="container-fluid parkDetailHeader">
-    <h2 class="detailText" >@(Model.ParkName.Replace(" National Park", ""))</h2>
+    <h2 class="detailText">@(Model.ParkName.Replace(" National Park", ""))</h2>
     <p class="detailText" style="display:inline-block; ">National Park | @Model.State</p>
 </div>
 
 <div class="container-fluid even">
 
-    <img src="~/Content/img/parks/@(Model.ParkCode).jpg" />
-    <div style ="display:inline-block; width: 50%" class="container-fluid">
-        <p style="padding-left:30px; display:inline-block">@Model.ParkDescription</p>
-        <p style="padding-top:10px; padding-left: 30px; display: inline-block">@Model.InspirationalQuote</p><br />
+    <img class="detailImage" src="~/Content/img/parks/@(Model.ParkCode).jpg" />
+    <div style="display:inline-block; width: 50%" class="container-fluid">
+        <p style="padding-left:30px; display:inline-block; padding-top:20px">@Model.ParkDescription</p>
+        <p style="padding-top:10px; padding-left: 30px; display: inline-block; font-style:italic">@Model.InspirationalQuote</p><br />
         <p style="padding-left: 30px; display: inline-block"><strong>-@Model.InspirationalQuoteSource</strong></p>
 
     </div>
@@ -25,17 +25,43 @@
 
 <div class="container-fluid weather">
     <h2><strong>Weather</strong></h2>
+
     <div class="container-fluid days">
         @foreach (Weather weather in Model.Forecast)
         {
             <div class="container-fluid day">
                 <h3><strong>@weather.DayOfWeek(weather.FiveDayForecastValue)</strong></h3>
-                <img src="~/Content/img/weather/@(weather.Forecast.Replace(" ", "")).png" alt="Alternate Text" />
+                <img class="forecastImage" src="~/Content/img/weather/@(weather.Forecast.Replace(" ", "")).png" alt="Alternate Text" />
                 <p style="font-size: large">High: @weather.High</p>
                 <p style="font-size: large">Low: @weather.Low</p>
+                @if (weather.WeatherRecommendation.Count > 0)
+                {
+                    string recommendations = weather.WeatherRecommendation[0];
+
+                    for (int i = 1; i < weather.WeatherRecommendation.Count; i++)
+                    {
+                        recommendations += $" {weather.WeatherRecommendation[i]}";
+                    }
+
+                    <p style="font-size: medium">@recommendations</p>
+                }
+
             </div>
         }
     </div>
 
-</div>
+    <div container-fluid>
 
+        @using (Html.BeginForm("Detail", "Park", new { parkCode = Model.ParkCode }, FormMethod.Post))
+        {
+            <div>
+                <label>Celsius: </label>
+                @Html.RadioButton("Celsius", true, Convert.ToBoolean(Session["isCelsius"]), new { onClick = "$(this).closest('form').submit()" })
+                <label>Fahrenheit: </label>
+                @Html.RadioButton("Celsius", false, !Convert.ToBoolean(Session["isCelsius"]), new { onClick = "$(this).closest('form').submit()" })
+            </div>
+        }
+
+    </div>
+
+</div>

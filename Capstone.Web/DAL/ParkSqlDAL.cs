@@ -101,13 +101,21 @@ namespace Capstone.Web.DAL
 
         public Park GetSurveyLeader()
         {
-            //Park park = new Park(); 
-            //using (SqlConnection conn = new SqlConnection(connectionString))
-            //{
-            //    conn.Open();
-            //    SqlCommand cmd = new SqlCommand ("SELECT", conn)
-            //}
-            throw new NotImplementedException();
+            Park park = new Park();
+            string parkCode = "";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT TOP 1 parkCode, COUNT(*) FROM survey_result GROUP BY parkCode ORDER BY COUNT(*) DESC", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    parkCode = Convert.ToString(reader["parkCode"]);
+                }
+            }
+            park = GetPark(parkCode);
+            return park;
         }
 
         public void SaveSurvey(Survey newSurvey)
@@ -123,7 +131,6 @@ namespace Capstone.Web.DAL
                     cmd.Parameters.AddWithValue("@state", newSurvey.State);
                     cmd.Parameters.AddWithValue("@activityLevel", newSurvey.ActivityLevel);
                     cmd.ExecuteNonQuery(); 
-
                 }
 
             }
@@ -153,6 +160,7 @@ namespace Capstone.Web.DAL
                         weather.Forecast = Convert.ToString(reader["forecast"]);
                         weather.High = Convert.ToInt32(reader["high"]);
                         weather.Low = Convert.ToInt32(reader["low"]);
+                        weather.IsCelcius = false;
                         weather.WeatherRecommendation = new List<string>(); 
 
                         if (weather.Forecast == "snow")

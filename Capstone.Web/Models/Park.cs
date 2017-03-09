@@ -25,7 +25,14 @@ namespace Capstone.Web.Models
         public int EntryFee { get; set; }
         public int NumberOfAnimalSpecies { get; set; }
         public List<Weather> Forecast { get; set; }
+
+        public void SwitchDegrees(bool isCelsius)
+        {
+            foreach(Weather weather in Forecast)
+            {
+                weather.IsCelcius = isCelsius;
+            }
+        }
     }
 
-    
 }

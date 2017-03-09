@@ -20,6 +20,11 @@ namespace Capstone.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            if(Session["isCelsius"] == null)
+            {
+                Session["isCelsius"] = false;
+            }
+
             List<Park> model = parkDAL.GetAllParks();
 
             return View("Index", model);
