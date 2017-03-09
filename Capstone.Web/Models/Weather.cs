@@ -7,10 +7,13 @@ namespace Capstone.Web.Models
 {
     public class Weather
     {
-        string ParkCode { get; set; }
-        int FiveDayForecastValue { get; set; }
-        int Low { get; set; }
-        int High { get; set; }
-        string Forecast { get; set; }
+        public string ParkCode { get; set; }
+        public int FiveDayForecastValue { get; set; }
+        public int Low { get; set; }
+        public int High { get; set; }
+        public string Forecast { get; set; }
+        public List<string> WeatherRecommendation { get; set; }
+
     }
+
 }
