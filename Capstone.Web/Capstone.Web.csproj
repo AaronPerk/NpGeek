@@ -126,6 +126,7 @@
     <Content Include="Content\img\weather\snow.png" />
     <Content Include="Content\img\weather\sunny.png" />
     <Content Include="Content\img\weather\thunderstorms.png" />
+    <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -133,6 +134,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ParkController.cs" />
     <Compile Include="DAL\IParkDAL.cs" />
     <Compile Include="DAL\IWeatherDAL.cs" />
     <Compile Include="DAL\ParkSqlDAL.cs" />
@@ -148,7 +150,9 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="ClassDiagram1.cd" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Park\Detail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -158,8 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Home\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

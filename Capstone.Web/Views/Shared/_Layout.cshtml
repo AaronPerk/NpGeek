@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+}
+@using Capstone.Web.DAL;
+@using Capstone.Web.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NPGeek - @ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+    <script src="https://use.fontawesome.com/b6042e8b1f.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+    <!-- BOOTSTRAPPER -->
+    <script src="~/Scripts/setup/bootstrapper.js"></script>
+
+    <!-- EXERCISES -->
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">National Park Geek</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Parks
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        @foreach(Park park in new ParkSqlDAL().GetAllParks())
+                        {
+                            <li><a href="#">@park.ParkName</a></li>
+                        }
+                    </ul>
+                </li>
+                <li><a href="#">Weather</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <footer>
+        <p style="text-align:center">Chad &amp; Aaron Industries &copy; @DateTime.Now.Year</p>
+    </footer>
+</body>
+</html>
