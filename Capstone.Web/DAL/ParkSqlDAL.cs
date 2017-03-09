@@ -33,7 +33,7 @@ namespace Capstone.Web.DAL
                         park.ElevationInFeet = Convert.ToInt32(reader["ElevationInFeet"]);
                         park.MilesOfTrail = Convert.ToDouble(reader["MilesOfTrail"]);
                         park.NumberOfCampsites = Convert.ToInt32(reader["NumberOfCampsites"]);
-                        park.Climate = Convert.ToString(reader["Climamte"]);
+                        park.Climate = Convert.ToString(reader["Climate"]);
                         park.YearFounded = Convert.ToInt32(reader["YearFounded"]);
                         park.ElevationInFeet = Convert.ToInt32(reader["ElevationInFeet"]);
                         park.AnnualVisitorCount = Convert.ToInt32(reader["AnnualVisitorCount"]);
@@ -76,7 +76,7 @@ namespace Capstone.Web.DAL
                         park.ElevationInFeet = Convert.ToInt32(reader["ElevationInFeet"]);
                         park.MilesOfTrail = Convert.ToDouble(reader["MilesOfTrail"]);
                         park.NumberOfCampsites = Convert.ToInt32(reader["NumberOfCampsites"]);
-                        park.Climate = Convert.ToString(reader["Climamte"]);
+                        park.Climate = Convert.ToString(reader["Climate"]);
                         park.YearFounded = Convert.ToInt32(reader["YearFounded"]);
                         park.ElevationInFeet = Convert.ToInt32(reader["ElevationInFeet"]);
                         park.AnnualVisitorCount = Convert.ToInt32(reader["AnnualVisitorCount"]);

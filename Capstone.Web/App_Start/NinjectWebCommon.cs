@@ -5,7 +5,7 @@ namespace Capstone.Web.App_Start
 {
     using System;
     using System.Web;
-
+    using Capstone.Web.DAL;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -61,7 +61,7 @@ namespace Capstone.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            
+            kernel.Bind<IParkDAL>().To<ParkSqlDAL>();
         }        
     }
 }

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Capstone.Web.Models
+@model List<Park>
+
+<main style="margin-top:50px;">
+
+    @foreach (Park park in Model)
+    {
+        <div class="parkTile">
+            <div class="container-fluid parkList">
+
+                <a href="/Park/Detail/?parkCode=@park.ParkCode"><img src="~/Content/img/parks/@(park.ParkCode.ToLower()).jpg" /></a>
+                <a href="/Park/Detail/?parkCode=@park.ParkCode"><h2 class="parkText">@park.ParkName</h2></a>
+                <p class="parkText">@park.ParkDescription</p>
+
+            </div>
+        </div>
+    }
+
+
+
+</main>

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Capstone.Web.Models
+@model Park
+
+<div class="container-fluid parkDetailHeader">
+    <h2 class="detailText" >@(Model.ParkName.Replace(" National Park", ""))</h2>
+    <p class="detailText" style="display:inline-block">National Park | @Model.State</p>
+</div>
+
+<div class="container-fluid even">
+
+    <img src="~/Content/img/parks/@(Model.ParkCode).jpg" />
+
+    <p style="padding-left:30px; width:50%; display:inline-block">@Model.ParkDescription</p>
+
+</div>
+
+<div class="container-fluid odd">
+
+    <p style="padding-top:10px;">@Model.InspirationalQuote</p><br />
+    <p><strong>-@Model.InspirationalQuoteSource</strong></p>
+
+</div>
