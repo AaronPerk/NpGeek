@@ -24,5 +24,9 @@ namespace Capstone.Web.Controllers
 
             return View("Index", model);
         }
+        public ActionResult PageNotFound()
+        {
+            return View("PageNotFound"); 
+        }
     }
 }

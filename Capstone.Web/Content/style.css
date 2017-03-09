@@ -35,3 +35,17 @@ nav{
 .odd{
     background-color: rgb(233, 233, 233);
 }
+.weather{
+    text-align: center; 
+    
+}
+.days{
+    display: inline-flex;
+    flex-direction: row; 
+
+
+}
+.day{
+    padding: 0px 25px; 
+    
+}

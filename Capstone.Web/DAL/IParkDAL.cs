@@ -13,5 +13,6 @@ namespace Capstone.Web.DAL
         Park GetPark(string parkCode);
         void SaveSurvey(Survey newSurvey);
         Park GetSurveyLeader();
+        List<Weather> GetFiveDayForecast(string parkCode);
     }
 }

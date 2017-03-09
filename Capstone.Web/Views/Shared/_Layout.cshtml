@@ -23,7 +23,6 @@
     <script src="~/Scripts/setup/bootstrapper.js"></script>
 
     <!-- EXERCISES -->
-
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -39,7 +38,7 @@
                     <ul class="dropdown-menu">
                         @foreach(Park park in new ParkSqlDAL().GetAllParks())
                         {
-                            <li><a href="#">@park.ParkName</a></li>
+                            <li><a href="/Park/Detail/?parkCode=@park.ParkCode">@park.ParkName</a></li>
                         }
                     </ul>
                 </li>

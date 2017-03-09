@@ -14,6 +14,30 @@ namespace Capstone.Web.Models
         public string Forecast { get; set; }
         public List<string> WeatherRecommendation { get; set; }
 
+        public string DayOfWeek(int fiveDayForcastValue)
+        {
+            if (fiveDayForcastValue == 1)
+            {
+                return "Monday"; 
+            }
+            else if (fiveDayForcastValue == 2)
+            {
+                return "Tuesday";
+            }
+            else if (fiveDayForcastValue == 3)
+            {
+                return "Wednesday";
+            }
+            else if (fiveDayForcastValue == 4)
+            {
+                return "Thursday";
+            }
+            else if (fiveDayForcastValue == 5)
+            {
+                return "Friday";
+            }
+            return ""; 
+        }
     }
 
 }

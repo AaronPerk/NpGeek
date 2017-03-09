@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace Capstone.Web.Models
 {
     public class Park
@@ -23,12 +24,8 @@ namespace Capstone.Web.Models
         public string ParkDescription { get; set; }
         public int EntryFee { get; set; }
         public int NumberOfAnimalSpecies { get; set; }
+        public List<Weather> Forecast { get; set; }
     }
 
-    //public List<SelectListItem> parkList = new List<SelectListItem>
-    //{
-        
-
-    //    new SelectListItem() { }
-    //};
+    
 }

@@ -12,5 +12,6 @@ namespace Capstone.Web.Controllers.Tests
     [TestClass()]
     public class HomeControllerTests
     {
+
     }
 }

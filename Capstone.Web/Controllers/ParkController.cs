@@ -29,10 +29,16 @@ namespace Capstone.Web.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            else if (parkDAL.GetPark(parkCode) == null)
+            {
+                return RedirectToAction("PageNotFound", "Home");
+            }
 
             Park model = parkDAL.GetPark(parkCode);
+            model.Forecast = parkDAL.GetFiveDayForecast(parkCode); 
 
             return View("Detail", model);
         }
+        
     }
 }
