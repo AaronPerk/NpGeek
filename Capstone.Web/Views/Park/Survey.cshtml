@@ -1,0 +1,46 @@
+﻿@using Capstone.Web.Models
+@using Capstone.Web.DAL
+@{
+    ViewBag.Title = "Survey";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Survey
+<div class="survey">
+    <h2>Survey</h2>
+
+    @using (Html.BeginForm("Survey", "Park", FormMethod.Post))
+    {   <label>Please select your favorite park</label>
+    <select name="ParkCode">
+        @foreach (Park park in new ParkSqlDAL().GetAllParks())
+        {
+            <option value="@park.ParkCode"> @park.ParkName</option>
+        }
+    </select>
+   
+    <div>
+        <label>Please enter your email: </label>
+        @Html.TextBoxFor(m => m.EmailAddress)
+        @Html.ValidationMessageFor(m => m.EmailAddress)
+        
+    </div>
+    <label>What state do you live in: </label>
+    <select name="State">
+
+        @foreach (string state in Survey.StateList)
+        { 
+            <option value="@state"> @state </option>
+        }     
+    </select>
+    <br/>
+    <label>What is your level of Physical Acitivity</label>
+    <select name="ActivityLevel">
+        @foreach (string level in Survey.ActivityLevelList)
+        {
+            <option value="@level"> @level</option>
+        }
+
+    </select>
+    <br />
+    <button>Submit</button> 
+    }
+</div>

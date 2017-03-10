@@ -153,6 +153,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Park\Detail.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />
+    <Content Include="Views\Park\Survey.cshtml" />
+    <Content Include="Views\Park\SurveyResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

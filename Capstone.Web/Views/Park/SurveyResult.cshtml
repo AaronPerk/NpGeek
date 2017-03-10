@@ -1,0 +1,11 @@
+﻿@using Capstone.Web.Models
+@model Park
+@{
+    ViewBag.Title = "SurveyResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SurveyResult</h2>
+
+<h1>Thank you for completing our survey</h1>
+<h3> Our most popular park: <a href="/Park/Detail/?parkCode=@Model.ParkCode">@Model.ParkName</a></h3>

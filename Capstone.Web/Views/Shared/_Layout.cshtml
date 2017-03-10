@@ -40,9 +40,12 @@
                         {
                             <li><a href="/Park/Detail/?parkCode=@park.ParkCode">@park.ParkName</a></li>
                         }
+                        
                     </ul>
+                   
                 </li>
-            </ul>
+                <li>@Html.ActionLink("Survey", "Survey", "Park") </li>
+</ul>
         </div>
     </nav>
 

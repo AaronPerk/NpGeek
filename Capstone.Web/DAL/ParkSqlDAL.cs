@@ -125,7 +125,7 @@ namespace Capstone.Web.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO survey_result (parkCode, emailAddress, state, activityLevel) VALUES (@parkCode, @emailAddress, @state, @activityLevel", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO survey_result (parkCode, emailAddress, state, activityLevel) VALUES (@parkCode, @emailAddress, @state, @activityLevel)", conn);
                     cmd.Parameters.AddWithValue("@parkCode", newSurvey.ParkCode); 
                     cmd.Parameters.AddWithValue("@emailAddress", newSurvey.EmailAddress);
                     cmd.Parameters.AddWithValue("@state", newSurvey.State);

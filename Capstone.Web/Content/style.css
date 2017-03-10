@@ -58,3 +58,10 @@ nav{
 .detailImage{
     vertical-align:top;
 }
+.survey{
+    margin-top: 50px; 
+}
+.field-validation-error{
+    color: red; 
+    font-weight: bold; 
+}

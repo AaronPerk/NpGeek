@@ -66,6 +66,28 @@ namespace Capstone.Web.Controllers
 
             return RedirectToAction("Detail", "Park", new { parkCode });
         }
+        
+        public ActionResult Survey()
+        {
+            return View("Survey");
+
+        }
+        [HttpPost]
+        public ActionResult Survey(Survey survey)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View("Survey", survey); 
+            }
+            parkDAL.SaveSurvey(survey); 
+            return RedirectToAction("SurveyResult", "Park"); 
+        }
+        public ActionResult SurveyResult()
+        {
+            Park model = parkDAL.GetSurveyLeader(); 
+
+            return View("SurveyResult",model);
+        }
 
 
 
