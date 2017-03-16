@@ -43,6 +43,8 @@ namespace Capstone.Web.Controllers
             else if (parkDAL.GetPark(parkCode) == null)
             {
                 return RedirectToAction("PageNotFound", "Home");
+                //return httpnotfound(); <--this will return the 404 page
+                //This allows you to set the web config to direct them to a different URL (look at exception not found website) 
             }
 
             Park model = parkDAL.GetPark(parkCode);

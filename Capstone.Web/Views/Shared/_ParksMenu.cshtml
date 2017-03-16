@@ -1,0 +1,10 @@
+﻿@model List<Capstone.Web.Models.Park>
+
+
+
+@foreach (var park in Model)
+{
+    <li><a href="/Park/Detail/?parkCode=@park.ParkCode">@park.ParkName</a></li>
+}
+
+

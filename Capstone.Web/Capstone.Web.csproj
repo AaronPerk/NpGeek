@@ -155,6 +155,7 @@
     <Content Include="Views\Home\PageNotFound.cshtml" />
     <Content Include="Views\Park\Survey.cshtml" />
     <Content Include="Views\Park\SurveyResult.cshtml" />
+    <Content Include="Views\Shared\_ParksMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

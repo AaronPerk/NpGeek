@@ -29,6 +29,12 @@ namespace Capstone.Web.Controllers
 
             return View("Index", model);
         }
+        [ChildActionOnly]
+        public ActionResult GetParks()
+        {
+            return PartialView("_ParksMenu", parkDAL.GetAllParks()); 
+        }
+
         public ActionResult PageNotFound()
         {
             return View("PageNotFound"); 

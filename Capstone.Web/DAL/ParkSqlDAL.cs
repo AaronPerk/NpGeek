@@ -42,8 +42,8 @@ namespace Capstone.Web.DAL
                         park.ParkDescription = Convert.ToString(reader["ParkDescription"]);
                         park.EntryFee = Convert.ToInt32(reader["EntryFee"]);
                         park.NumberOfAnimalSpecies = Convert.ToInt32(reader["NumberOfAnimalSpecies"]);
-                        parks.Add(park); 
-                        
+                        parks.Add(park);
+
                     }
 
                 }
@@ -58,18 +58,18 @@ namespace Capstone.Web.DAL
 
         public Park GetPark(string parkCode)
         {
-            Park park = new Park(); 
             try
             {
-                using(SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("Select * From Park WHERE parkCode = @parkCode ", conn);
                     cmd.Parameters.AddWithValue("@parkCode", parkCode);
-                    SqlDataReader reader = cmd.ExecuteReader(); 
+                    SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
+                        Park park = new Park();
                         park.ParkCode = Convert.ToString(reader["parkCode"]);
                         park.ParkName = Convert.ToString(reader["parkName"]);
                         park.State = Convert.ToString(reader["State"]);
@@ -86,9 +86,9 @@ namespace Capstone.Web.DAL
                         park.ParkDescription = Convert.ToString(reader["ParkDescription"]);
                         park.EntryFee = Convert.ToInt32(reader["EntryFee"]);
                         park.NumberOfAnimalSpecies = Convert.ToInt32(reader["NumberOfAnimalSpecies"]);
-                        return park; 
+                        return park;
                     }
-                   
+
                 }
             }
             catch (Exception)
@@ -96,7 +96,7 @@ namespace Capstone.Web.DAL
 
                 throw;
             }
-            return null; 
+            return null;
         }
 
         public Park GetSurveyLeader()
@@ -126,11 +126,11 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO survey_result (parkCode, emailAddress, state, activityLevel) VALUES (@parkCode, @emailAddress, @state, @activityLevel)", conn);
-                    cmd.Parameters.AddWithValue("@parkCode", newSurvey.ParkCode); 
+                    cmd.Parameters.AddWithValue("@parkCode", newSurvey.ParkCode);
                     cmd.Parameters.AddWithValue("@emailAddress", newSurvey.EmailAddress);
                     cmd.Parameters.AddWithValue("@state", newSurvey.State);
                     cmd.Parameters.AddWithValue("@activityLevel", newSurvey.ActivityLevel);
-                    cmd.ExecuteNonQuery(); 
+                    cmd.ExecuteNonQuery();
                 }
 
             }
@@ -161,7 +161,7 @@ namespace Capstone.Web.DAL
                         weather.High = Convert.ToInt32(reader["high"]);
                         weather.Low = Convert.ToInt32(reader["low"]);
                         weather.IsCelcius = false;
-                        weather.WeatherRecommendation = new List<string>(); 
+                        weather.WeatherRecommendation = new List<string>();
 
                         if (weather.Forecast == "snow")
                         {
